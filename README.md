@@ -1,4 +1,6 @@
 # SCINT
 Welcome to the Screw Interpreter!
 
-What is Screw?
+The Screw Interpreter, or SCINT, is an interpreter for the Screw programming language.
+
+## What is Screw?
