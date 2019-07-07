@@ -23,13 +23,13 @@ Screw has nine (9) reserved symbols that are strictly for coding. These symbols 
 Screw's syntax is near identical to Brainf\*\*k. The only real difference as of now is that you have to have a tilda (~) at the end of your program. For examples of Screw, you can check out the .scw files that I uploaded. The code is commented, however, a little difficult to follow since it the language is so low-level.
 
 ## Running Screw Code
-**NOTE: SCRINT was developed to be run on a bash terminal
+**NOTE: SCRINT was developed to be run on a bash terminal**
 
 To run Screw you will have to download the main.c file, then open your bash terminal and type the following: 
-gcc main.c -o scrint
+**gcc main.c -o scrint**
 
-Hit enter and then then you will have an executable named scrint. Next make sure your Screw programs are in the same directory as your exectubale. Then in bash, just type:                                                                                                 ./scrint <your_file_here>.scw
+Hit enter and then then you will have an executable named scrint. Next make sure your Screw programs are in the same directory as your exectubale. Then in bash, just type:                                                                                                 **./scrint <your_file_here>.scw**
 
-This will run your file and that is it! You can view version information if you wish by typing:                                         ./scrint -v
+This will run your file and that is it! You can view version information if you wish by typing:                                         **./scrint -v**
 
 ## Future Work
