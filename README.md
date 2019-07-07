@@ -9,15 +9,15 @@ Screw is interpreted through a program written in C. Screw files are saved with 
 
 ## Reserved Symbols
 Screw has nine (9) reserved symbols that are strictly for coding. These symbols may not be used in a file, except to perform an operation:
-1. '+' : Increment Cell by 1
-2. '-' : Decrement Cell by 1
-3. '{' : Begin Loop
-4. '}' : End Loop
-5. '?' : Input Char
-6. '.' : Output Char
-7. '<' : Shift One Cell Left
-8. '>' : Shift One Cell Right
-9. '~' : End File
+1. '+'  :  Increment Cell by 1
+2. '-'  :  Decrement Cell by 1
+3. '{'  :  Begin Loop
+4. '}'  :  End Loop
+5. '?'  :  Input Char
+6. '.'  :  Output Char
+7. '<'  :  Shift One Cell Left
+8. '>'  :  Shift One Cell Right
+9. '~'  :  End File
 
 ## Syntax
 Screw's syntax is near identical to Brainf\*\*k. The only real difference as of now is that you have to have a tilda (~) at the end of your program. For examples of Screw, you can check out the .scw files that I uploaded. The code is commented, however, a little difficult to follow since it the language is so low-level.
@@ -33,3 +33,4 @@ Hit enter and then then you will have an executable named scrint. Next make sure
 This will run your file and that is it! You can view version information if you wish by typing:                                         **./scrint -v**
 
 ## Future Work
+I plan on setting apart screw from Brainf\*\*k by adding support for keywords. When these keywords are evalutated, they will be replaced with the appropriate code to execute the instruction.
