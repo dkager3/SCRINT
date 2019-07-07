@@ -28,10 +28,8 @@ Screw's syntax is near identical to Brainf\*\*k. The only real difference as of 
 To run Screw you will have to download the main.c file, then open your bash terminal and type the following: 
 gcc main.c -o scrint
 
-Hit enter and then then you will have an executable named scrint. Next make sure your Screw programs are in the same directory as your exectubale. Then in bash, just type:
-./scrint <your_file_here>.scw
+Hit enter and then then you will have an executable named scrint. Next make sure your Screw programs are in the same directory as your exectubale. Then in bash, just type:                                                                                                 ./scrint <your_file_here>.scw
 
-This will run your file and that is it! You can view version information if you wish by typing:
-./scrint -v
+This will run your file and that is it! You can view version information if you wish by typing:                                         ./scrint -v
 
 ## Future Work
