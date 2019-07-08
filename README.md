@@ -8,7 +8,6 @@ SCRINT is the Screw Interpreter. Screw is a Turing Complete programming language
 Screw is interpreted through a program written in C. Screw files are saved with an extention of ".scw" and the interpreter will handle only those types of files. The file is read by the interpreter, reduced down to essential operations (ignoring all other non-essential characters), then each operation is handled one at a time and turned into C code to run behind the scene.
 
 ## Screw Recognized Symbols
-Screw has many recocnized symbols:
 1.  '+'  :  Increment Cell by 1
 2.  '-'  :  Decrement Cell by 1
 3.  '{'  :  Begin Loop
