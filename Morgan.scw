@@ -1,0 +1,46 @@
+>+++++ ++											; ADD 7 TO CELL 1
+{
+	<+++++ +++++								; LOOP UNTIL CELL 0 = 70
+	>-
+}
+<+++++++>											; ADD 7 TO CELL 0, SHIFT BACK TO CELL 2 -- CELL 0 = 77
+
+>+++++ +++++ +								; ADD 11 TO CELL 2
+{
+	<+++++ +++++								; LOOP UNTIL CELL 1 = 110
+	>-
+}
+<+>														; ADD 1 TO CELL 1, SHIFT BACK TO CELL 2 -- CELL 1 = 111
+
+>+++++ +++++ +++++ ++++				; ADD 19 TO CELL 3
+{
+	<+++++ +										; LOOP UNTIL CELL 2 = 114
+	>-
+}
+
+>+++++ +++++									; ADD 10 T0 CELL 4
+{
+	<+++++ +++++								; LOOP UNTIL CELL 3 = 100
+	>-
+}
+<+++>													; ADD 3 TO CELL 3, SHIFT BACK TO CELL 4 -- CELL 3 = 103
+
+>+++++ +++++ +++++ ++++				; ADD 19 TO CELL 5
+{
+	<+++++											; LOOP UNTIL CELL 4 = 95
+	>-
+}
+<++>													; ADD 2 TO CELL 4, SHIFT BACK TO CELL 5 -- CELL 4 = 97
+
+>+++++ +++++ +								; ADD 11 TO CELL 6
+{
+	<+++++ +++++								; LOOP UNTIL CELL 5 = 110
+	>-
+}
+
++++++ +++++									  ; ADD 10 TO CELL 6
+
+*0^6.													; DUMP THE CONTENTS OF CELLS 0-6, THEN WIPE THEM
+~															; END PROGRAM
+
+															; OUTPUT: Morgan

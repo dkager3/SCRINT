@@ -1,15 +1,15 @@
-+++								ADD 3 TO CELL 1
->+++++						ADD 5 TO CELL 2
-{									ADD 1 TO CELL 1 AND SUB 1 FROM CELL 2 UNTIL CELL 2 == 0
++++								;ADD 3 TO CELL 1
+>+++++						;ADD 5 TO CELL 2
+{									;ADD 1 TO CELL 1 AND SUB 1 FROM CELL 2 UNTIL CELL 2 == 0
 	<+
 	>-
 }
 
-+++++ +++ 				ADD 8 TO CELL 2
++++++ +++ 				;ADD 8 TO CELL 2
 {
-<+++++ +					ADD 6 TO CELL 1
->-								SUB 1 FROM CELL 2
+<+++++ +					;ADD 6 TO CELL 1
+>-								;SUB 1 FROM CELL 2
 }
-<.								OUTPUT ANSWER IN CELL 1 (SUM = 8)
->++++++++++.			SHIFT TO CELL 2 AND INCREMENT 10 TIMES FOR NEW LINE CHARACTER
+<.								;OUTPUT ANSWER IN CELL 1 (SUM = 8)
+>++++++++++.			;SHIFT TO CELL 2 AND INCREMENT 10 TIMES FOR NEW LINE CHARACTER
 ~

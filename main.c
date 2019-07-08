@@ -4,6 +4,7 @@
 //  Screw Interpreter
 //
 //  Created by Dennis Kager on 7/6/19.
+//  Last Modified on 7/8/19.
 //  Copyright © 2019 Dennis Kager. All rights reserved.
 //
 
@@ -12,6 +13,7 @@
 #include <unistd.h> // For lseek(), close()
 #include <string.h> // For memset(), strlen(), strcmp()
 #include <stdlib.h> // For malloc() and free()
+#include <ctype.h>  // isdigit()
 
 #define CELLS 60000 // How many memory cells there will be
 #define RESET "\033[0m"
@@ -30,6 +32,7 @@ int main(int argc, const char * argv[]) {
     char *token = NULL;                     // Holds the filtered contents of the file
     int token_length = 0;                   // Holds the filtered file length
     char *c = NULL;                         // Cursor for filtering the file contents
+    _Bool comment = 0;                      // True if reading a comment
     int rd = 0;                             // File descriptor for reading the file
     
     if(argc == 2 && strcmp(argv[1], "-v") != 0){    // Check to make sure there are two arguments and that using is not asking for version info
@@ -87,10 +90,104 @@ int main(int argc, const char * argv[]) {
         //===================================================================================================
         c = file_buffer;                                // Set cursor to beginning of the file_buffer (holds the original contents of file)
         while(*c != '~'){                               // While the cursor is not the terminating character
-            if(*c == '+' || *c == '-' || *c == '{' || *c == '}' || *c == '?' || *c == '>' || *c == '<' || *c == '.')
-                ++token_length;                         // Increment the token_length for each operator found
+            switch(*c){                                 // Switch case to count all operators to put into token
+                case '+':
+                    if(!comment)
+                        ++token_length;
+                    break;
+                case '-':
+                    if(!comment)
+                        ++token_length;
+                    break;
+                case '{':
+                    if(!comment)
+                        ++token_length;
+                    break;
+                case '}':
+                    if(!comment)
+                        ++token_length;
+                    break;
+                case '?':
+                    if(!comment)
+                        ++token_length;
+                    break;
+                case '>':
+                    if(!comment)
+                        ++token_length;
+                    break;
+                case '<':
+                    if(!comment)
+                        ++token_length;
+                    break;
+                case '.':
+                    if(!comment)
+                        ++token_length;
+                    break;
+                case '*':
+                    if(!comment)
+                        ++token_length;
+                    break;
+                case '^':
+                    if(!comment)
+                        ++token_length;
+                    break;
+                case '0':
+                    if(!comment)
+                        ++token_length;
+                    break;
+                case '1':
+                    if(!comment)
+                        ++token_length;
+                    break;
+                case '2':
+                    if(!comment)
+                        ++token_length;
+                    break;
+                case '3':
+                    if(!comment)
+                        ++token_length;
+                    break;
+                case '4':
+                    if(!comment)
+                        ++token_length;
+                    break;
+                case '5':
+                    if(!comment)
+                        ++token_length;
+                    break;
+                case '6':
+                    if(!comment)
+                        ++token_length;
+                    break;
+                case '7':
+                    if(!comment)
+                        ++token_length;
+                    break;
+                case '8':
+                    if(!comment)
+                        ++token_length;
+                    break;
+                case '9':
+                    if(!comment)
+                        ++token_length;
+                    break;
+                case ';':                               // If semi-colon is found, set comment to true
+                    if(!comment)
+                        comment = 1;
+                    break;
+                case '\n':                              // If newline is found, set comment to false
+                    if(comment)
+                        comment = 0;
+                    break;
+                default:
+                    break;
+            }
             ++c;                                        // Move cursor to the next character
         }
+        
+        if(comment)
+            comment = 0;
+        
         
         token = (char*)malloc((token_length * sizeof(char)) + 1); // Set the token length to the length of all the operators found
         if(token == NULL){                              // Check to make sure malloc() did not return NULL
@@ -103,9 +200,137 @@ int main(int argc, const char * argv[]) {
         int i = 0;                                     // Index of instruction in token
         c = file_buffer;                               // Set cursor to beginning of the file_buffer (holds the original contents of file)
         while(*c != '~'){                              // While the cursor is not the terminating character
-            if(*c == '+' || *c == '-' || *c == '{' || *c == '}' || *c == '?' || *c == '>' || *c == '<' || *c == '.'){
-                token[i] = *c;                         // Only add operators to the token
-                ++i;                                   // Increment to store the next operator
+            switch(*c){                                // Switch case adds operations to the token
+                case '+':
+                    if(!comment){
+                        token[i] = *c;
+                        ++i;
+                    }
+                    break;
+                case '-':
+                    if(!comment){
+                        token[i] = *c;
+                        ++i;
+                    }
+                    break;
+                case '{':
+                    if(!comment){
+                        token[i] = *c;
+                        ++i;
+                    }
+                    break;
+                case '}':
+                    if(!comment){
+                        token[i] = *c;
+                        ++i;
+                    }
+                    break;
+                case '?':
+                    if(!comment){
+                        token[i] = *c;
+                        ++i;
+                    }
+                    break;
+                case '>':
+                    if(!comment){
+                        token[i] = *c;
+                        ++i;
+                    }
+                    break;
+                case '<':
+                    if(!comment){
+                        token[i] = *c;
+                        ++i;
+                    }
+                    break;
+                case '.':
+                    if(!comment){
+                        token[i] = *c;
+                        ++i;
+                    }
+                    break;
+                case '*':
+                    if(!comment){
+                        token[i] = *c;
+                        ++i;
+                    }
+                    break;
+                case '^':
+                    if(!comment){
+                        token[i] = *c;
+                        ++i;
+                    }
+                    break;
+                case '0':
+                    if(!comment){
+                        token[i] = *c;
+                        ++i;
+                    }
+                    break;
+                case '1':
+                    if(!comment){
+                        token[i] = *c;
+                        ++i;
+                    }
+                    break;
+                case '2':
+                    if(!comment){
+                        token[i] = *c;
+                        ++i;
+                    }
+                    break;
+                case '3':
+                    if(!comment){
+                        token[i] = *c;
+                        ++i;
+                    }
+                    break;
+                case '4':
+                    if(!comment){
+                        token[i] = *c;
+                        ++i;
+                    }
+                    break;
+                case '5':
+                    if(!comment){
+                        token[i] = *c;
+                        ++i;
+                    }
+                    break;
+                case '6':
+                    if(!comment){
+                        token[i] = *c;
+                        ++i;
+                    }
+                    break;
+                case '7':
+                    if(!comment){
+                        token[i] = *c;
+                        ++i;
+                    }
+                    break;
+                case '8':
+                    if(!comment){
+                        token[i] = *c;
+                        ++i;
+                    }
+                    break;
+                case '9':
+                    if(!comment){
+                        token[i] = *c;
+                        ++i;
+                    }
+                    break;
+                case ';':                              // If semi-colon is found, set comment to true
+                    if(!comment)
+                        comment = 1;
+                    break;
+                case '\n':                             // If newline is found, set comment to false
+                    if(comment)
+                        comment = 0;
+                    break;
+                default:
+                    break;
             }
             ++c;                                       // Move cursor to the next character
         }
@@ -114,6 +339,7 @@ int main(int argc, const char * argv[]) {
         // RUN FILE
         //===================================================================================================
         run(token);                                    // Run the tokenized, ready-to-go screw code
+        //printf("%s\n", token);                       // For debugging - Viewing final token to be run
         
         free(file_buffer);                             // Free dynamically allocated memory
         free(token);                                   // Free dynamically allocated memory
@@ -122,7 +348,7 @@ int main(int argc, const char * argv[]) {
         printf("\n");
         printf("                  Screw Interpreter\n");
         printf("========================================================\n");
-        printf("|| Version 1.0 - July 6, 2019\n");
+        printf("|| Version 1.5 - July 8, 2019\n");
         printf("|| Screw language based on Brainf**k by Urban Müller\n");
         printf("|| Full documentation on GitHub @dkager3\n");
         printf("|| Designed by Dennis Kager\n");
@@ -199,10 +425,84 @@ void run(char *code){                                  // Interpret tokenized sc
             --*data_ptr;
         else if(*code_ptr == '.')                      // Output cell contents
             putchar(*data_ptr);
+        else if (*code_ptr == '*'){                    // Dump multiple cell's contents
+            int lower_bound = 0;                       // First cell user wants dumped
+            int upper_bound = 0;                       // Last cell user wants dumped
+            
+            ++code_ptr;                                // Increment instruction pointer
+            if(!isdigit(*code_ptr)){                   // Check to make sure the instruction is a digit
+                fprintf(stderr, "%sError:%s Cell Dumping - Expected integer for lower bound!\n", RED, RESET);
+                return;
+            }
+            lower_bound = *code_ptr - '0';             // Set lower bound
+            
+            ++code_ptr;                                // Increment instruction pointer
+            if(*code_ptr != '^'){                      // Make sure instruction is '^'
+                if(isdigit(*code_ptr)){                // If not '^' and is digit
+                    fprintf(stderr, "%sError:%s Cell Dumping may only be applied to cells 0-9\n", RED, RESET);
+                }
+                else                                   // If not '^' and is anything else
+                    fprintf(stderr, "%sError:%s Cell Dumping - Expected '^'\n", RED, RESET);
+                return;
+            }
+            ++code_ptr;                                // Increment instruction pointer
+            
+            if(!isdigit(*code_ptr)){                   // Check to make sure next instruction is digit
+                fprintf(stderr, "%sError:%s Cell Dumping - Expected integer for upper bound!\n", RED, RESET);
+                return;
+            }
+            upper_bound = *code_ptr - '0';             // Set upper bound
+            
+            ++code_ptr;                                // Temporarily increment instruction pointer
+            if(isdigit(*code_ptr)){                    // Check to see is the next instruction is a digit
+                fprintf(stderr, "%sError:%s Cell Dumping may only be applied to cells 0-9\n", RED, RESET);
+                return;
+            }
+            --code_ptr;                                // Decrement instruction pointer if not a digit
+            
+            if(lower_bound > upper_bound) {            // Check to make sure the lower bound is less than the upper bound
+                fprintf(stderr, "%sError:%s Cell Dumping - Lower bound is greater than upper bound!\n", RED, RESET);
+                return;
+            }
+            
+            if(left_offset < lower_bound){             // If the data pointer is below the lower bound, then move it to the lower bound
+                while(left_offset != lower_bound){
+                    ++data_ptr;
+                    ++left_offset;
+                }
+            }
+            else if(left_offset > lower_bound){        // If the data pointer is above the lower bound, then move it to the lower bound
+                while(left_offset != lower_bound){
+                    --data_ptr;
+                    --left_offset;
+                }
+            }
+            if(left_offset == lower_bound){           // If the data pointer is at the lower bound, then output data until upper bound, inclusive
+                while(left_offset != upper_bound + 1){
+                    putchar(*data_ptr);
+                    if(left_offset != upper_bound){
+                        ++data_ptr;
+                        ++left_offset;
+                    }
+                    else
+                        break;
+                }
+            }
+            
+            while(left_offset != lower_bound -1){    // Reset all dumped cells to default value (0)
+                *data_ptr = 0;
+                if(left_offset != lower_bound){
+                    --data_ptr;
+                    --left_offset;
+                }
+                else
+                    break;
+            }
+        }
         else if(*code_ptr == '?')                      // Input char
             *data_ptr=getchar();
         else if(*code_ptr == '{'){                     // Loop instructions between braces until the start cell reaches 0
-            if(!(*data_ptr))                           //================================================================
+            if(!(*data_ptr))                             //===============================================================
             {                                                                       //
                 braces++;                                                           //
                 while(braces)                                                       //
@@ -229,7 +529,7 @@ void run(char *code){                                  // Interpret tokenized sc
             }                                                                       //
         }                                              //================================================================
         else{
-            fprintf(stderr, "%sError:%s Unknown symbol '%c' found!", RED, RESET, *code_ptr); // Error if an unknown symbol has been found
+            fprintf(stderr, "%sError:%s Unknown symbol '%c' found!\n", RED, RESET, *code_ptr); // Error if an unknown symbol has been found
             return;
         }
         ++code_ptr;                                   // Increment to next screw instruction
