@@ -27,7 +27,7 @@ Screw has many recocnized symbols:
 Screw's syntax is similar to Brainf\*\*k. You have to have a tilda (~) at the end of your program and commenting is done with a semi-colon (;). For examples of Screw, you can check out the .scw files that I uploaded.
 
 ## Screw Features
-- Screw has a new feature known as "cell dump". This feature allows the user to output multiple adjacent cells by giving a lower bound and an upper bound. After that, each of the cells "dumped" are then wiped and reset to their default value (0). An example of cell dumping: **\*0^6** will output the contents of cells 0 through 6, then wipe the contents. *Note: Cell dumping only works for cells 0-9.*
+- Screw has a new feature known as "cell dump". This feature allows the user to output multiple adjacent cells by giving a lower bound and an upper bound. After that, each of the cells "dumped" are then wiped and reset to their default value (0). An example of cell dumping: **\*0^6** will output the contents of cells 0 through 6, then wipe the contents. **Note: Cell dumping only works for cells 0-9.**
 - Screw now has commenting. This feature allows only for single-line commenting and is done by using a semi-colon (;)
 
 ## Running Screw Code
