@@ -14,7 +14,7 @@ Screw has many recocnized symbols:
 3.  '{'  :  Begin Loop
 4.  '}'  :  End Loop
 5.  '?'  :  Input Char
-6.  '.'  :  Output Char
+6.  '.'   :  Output Char
 7.  '<'  :  Shift One Cell Left
 8.  '>'  :  Shift One Cell Right
 9.  '\*'  : Cell Dump (See Features Below)
