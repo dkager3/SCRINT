@@ -9,16 +9,16 @@
 //
 
 #include <stdio.h>
-#include <fcntl.h>  // For open()
-#include <unistd.h> // For lseek(), close()
-#include <string.h> // For memset(), strlen(), strcmp()
-#include <stdlib.h> // For malloc() and free()
-#include <ctype.h>  // isdigit()
+#include <fcntl.h>          // For open()
+#include <unistd.h>         // For lseek(), close()
+#include <string.h>         // For memset(), strlen(), strcmp()
+#include <stdlib.h>         // For malloc() and free()
+#include <ctype.h>          // isdigit()
 
-#define CELLS 60000 // How many memory cells there will be
-#define RESET "\033[0m"
-#define RED "\033[0;31m"
-#define YELLOW "\033[0;33m"
+#define CELLS 60000         // How many memory cells there will be
+#define RESET "\033[0m"     // Default color
+#define RED "\033[0;31m"    // Red
+#define YELLOW "\033[0;33m" // Yellow
 
 _Bool termChar(char *);         // Check to make sure the program has a terminating character
 _Bool matchingBraces(char *);   // Check to make sure the program has matching braces
@@ -34,7 +34,7 @@ int main(int argc, const char * argv[]) {
     char *c = NULL;                         // Cursor for filtering the file contents
     _Bool comment = 0;                      // True if reading a comment
     int rd = 0;                             // File descriptor for reading the file
-    
+   
     if(argc == 2 && strcmp(argv[1], "-v") != 0){    // Check to make sure there are two arguments and that using is not asking for version info
         file_name_len = (int)strlen(argv[1]);       // Get length of the file name
         file_extension = &argv[1][file_name_len-4]; // Pointer to the file extension
@@ -168,6 +168,14 @@ int main(int argc, const char * argv[]) {
                         ++token_length;
                     break;
                 case '9':
+                    if(!comment)
+                        ++token_length;
+                    break;
+                case 'A':
+                    if(!comment)
+                        ++token_length;
+                    break;
+                case 'S':
                     if(!comment)
                         ++token_length;
                     break;
@@ -321,6 +329,18 @@ int main(int argc, const char * argv[]) {
                         ++i;
                     }
                     break;
+                case 'A':
+                    if(!comment){
+                        token[i] = *c;
+                        ++i;
+                    }
+                    break;
+                case 'S':
+                    if(!comment){
+                        token[i] = *c;
+                        ++i;
+                    }
+                    break;
                 case ';':                              // If semi-colon is found, set comment to true
                     if(!comment)
                         comment = 1;
@@ -348,8 +368,7 @@ int main(int argc, const char * argv[]) {
         printf("\n");
         printf("                  Screw Interpreter\n");
         printf("========================================================\n");
-        printf("|| Version 1.5 - July 8, 2019\n");
-        printf("|| Screw language based on Brainf**k by Urban Müller\n");
+        printf("|| Version 2.0 - July 8, 2019\n");
         printf("|| Full documentation on GitHub @dkager3\n");
         printf("|| Designed by Dennis Kager\n");
         printf("========================================================\n\n");
@@ -499,8 +518,79 @@ void run(char *code){                                  // Interpret tokenized sc
                     break;
             }
         }
+        else if(*code_ptr == 'A'){                  // Add value to current cell
+            int current_value = *data_ptr;          // Get current cell's value
+            char num_to_add_str[127];               // String to hold number being added
+            int num_to_add = 0;                     // To hold converted string as an integer
+            
+            memset(num_to_add_str, '\0', 127);      // Initialize string with 0
+            
+            ++code_ptr;                             // Increment instruction
+            if(!isdigit(*code_ptr)){                // Check to make sure the current instruction is an integer
+                fprintf(stderr, "%sError:%s Add - Expected integer!\n", RED, RESET);
+                return;
+            }
+            
+            int i = 0;                              // Index for num_to_add_str
+            while(isdigit(*code_ptr)){              // Loop as long as there are integers found in instructions
+                num_to_add_str[i] = *code_ptr;      // Add each integer found to the string
+                ++i;
+                ++code_ptr;
+            }
+            
+            --code_ptr;                             // Decrement instruction
+            
+            num_to_add = atoi(num_to_add_str);      // Convert string to actual integer
+            
+            if(current_value + num_to_add > 127){   // Check to make sure the result stays within the ASCII table
+                fprintf(stderr, "%sError:%s Add - Cell Overflow!\n", RED, RESET);
+                return;
+            }
+            
+            num_to_add += current_value;            // Create a stopping place for the loop
+            while(current_value != num_to_add){     // Loop and increment cell until x is added
+                ++*data_ptr;
+                ++current_value;
+            }
+        }
+        else if(*code_ptr == 'S'){                  // Sub value from the current cell
+            int current_value = *data_ptr;          // Get current cell's value
+            char num_to_sub_str[127];               // String to hold number being subtracted
+            int num_to_sub = 0;                     // To hold converted string as an integer
+            int num_to_stop_at = 0;                 // Stopping place for the loop below
+            
+            memset(num_to_sub_str, '\0', 127);      // Initialize string with 0
+            
+            ++code_ptr;                             // Increment instruction
+            if(!isdigit(*code_ptr)){                // Check to make sure the current instruction is an integer
+                fprintf(stderr, "%sError:%s Sub - Expected integer!\n", RED, RESET);
+                return;
+            }
+            
+            int i = 0;                              // Index for num_to_add_str
+            while(isdigit(*code_ptr)){              // Loop as long as there are integers found in instructions
+                num_to_sub_str[i] = *code_ptr;      // Add each integer found to the string
+                ++i;
+                ++code_ptr;
+            }
+            
+            --code_ptr;                             // Decrement instruction
+            
+            num_to_sub = atoi(num_to_sub_str);      // Convert string to actual integer
+            
+            if(current_value - num_to_sub < 0){     // Check to make sure the result stays within the ASCII table
+                fprintf(stderr, "%sError:%s Sub - Cell Overflow!\n", RED, RESET);
+                return;
+            }
+            
+            num_to_stop_at = current_value - num_to_sub; // Create a stopping place for the loop
+            while(current_value != num_to_stop_at){ // Loop and decrement cell until x is subtracted
+                --*data_ptr;
+                --current_value;
+            }
+        }
         else if(*code_ptr == '?')                      // Input char
-            *data_ptr=getchar();
+            *data_ptr = getchar();
         else if(*code_ptr == '{'){                     // Loop instructions between braces until the start cell reaches 0
             if(!(*data_ptr))                             //===============================================================
             {                                                                       //

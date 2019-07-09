@@ -1,0 +1,50 @@
+; Hello World with only elementary operations
+
+>+++++ ++++										;ADD 9 TO CELL 2
+{
+<+++++ +++		  							;LOOP UNTIL CELL 1 = 72 AND CELL 2 = 0
+>-
+}
+<.														;PRINT "H"
+{-}														;0 OUT CELL 1
+
+
+>+++++ +++++									;ADD 10 TO CELL 2
+{
+<+++++ +++++									;LOOP UNTIL CELL 1 = 100 AND CELL 2 = 0
+>-
+}
+<+.														;ADD 1 TO CELL 1, SO IT EQUALS 101 AND PRINT 'e'
++++++ ++..+++.								;PRINT "llo"
+{-}														;0 OUT CELL 1
+
+>+++++ +++										;ADD 8 TO CELL 2
+{
+<++++													;LOOP UNTIL CELL 1 = 32
+>-
+}
+<.														;PRINT SPACE
+
+>+++++ +++++ +								;ADD 11 TO CELL 2
+{
+<+++++												;LOOP UNTIL CELL 1 = 87
+>-
+}
+<.														;PRINT 'W'
+
+>+++++ +											;ADD 6 TO CELL 2
+{
+<++++													;LOOP TO ADD 24 TO CELL 1 SO CELL 1 = 111
+>-
+}
+<.+++.----- -.----- ---.			;PRINT "orld"
+{-}														;0 OUT CELL 1
+
+>+++++ +++										;ADD 8 TO CELL 2
+{
+<++++													;LOOP UNTIL CELL 1 = 32
+>-
+}
+<+.														;INCREMENT TO 33 AND PRINT '!'
+>++++++++++.									;PRINT NEW LINE
+~															;END PROGRAM
