@@ -1,8 +1,8 @@
-# SCRINT 1.5 Documentation
+# SCRINT 2.0 Documentation
 Welcome! Please view the documentation for SCRINT down below.
 
 ## What is SCRINT?
-SCRINT is the Screw Interpreter. Screw is a Turing Complete programming language that is very closely modeled after Brainf\*\*k. How Screw differs is that it has some different symbols, has a generally larger cell capacity (set at 60,000 bytes by default), extra features, and has a termination character for the end of programs.
+SCRINT is the Screw Interpreter. Screw is a programming language that is closely modeled after Brainf\*\*k. How Screw differs is that it has some different symbols, extra features, and has a termination character for the end of programs.
 
 ## How is Screw Interpreted?
 Screw is interpreted through a program written in C. Screw files are saved with an extention of ".scw" and the interpreter will handle only those types of files. The file is read by the interpreter, reduced down to essential operations (ignoring all other non-essential characters), then each operation is handled one at a time and turned into C code to run behind the scene.
@@ -19,6 +19,8 @@ Screw is interpreted through a program written in C. Screw files are saved with 
 9.  '\*'  : Cell Dump (See Features Below)
 10. '^'  : Enumeration symbol (as in 0 to 5)
 11. 0-9  : Numbers 0 through 9
+12. 'A'  : Add Given Number to Current Cell
+13. 'S'  : Subtract Given Number From Current Cell
 12. ';'  : Comment
 13. '~'  :  End File
 
@@ -26,8 +28,10 @@ Screw is interpreted through a program written in C. Screw files are saved with 
 Screw's syntax is similar to Brainf\*\*k. You must have a tilda (~) at the end of your program and commenting is done with a semi-colon (;). For examples of Screw, you can check out the .scw files that I uploaded.
 
 ## Screw Features
-- Screw has a new feature known as "cell dump". This feature allows the user to output multiple adjacent cells by giving a lower bound and an upper bound. After that, each of the cells "dumped" are then wiped and reset to their default value (0). An example of cell dumping: **\*0^6** will output the contents of cells 0 through 6, then wipe the contents. **Note: Cell dumping only works for cells 0-9.**
-- Screw now has commenting. This feature allows only for single-line commenting and is done by using a semi-colon (;)
+- Screw has a feature known as "cell dump". This feature allows the user to output multiple adjacent cells by giving a lower bound and an upper bound. After that, each of the cells "dumped" are then wiped and reset to their default value (0). An example of cell dumping: **\*0^6** will output the contents of cells 0 through 6, then wipe the contents. **Note: Cell dumping only works for cells 0-9.**
+- Screw has commenting. This feature allows only for single-line commenting and is done by using a semi-colon (;)
+- Screw can add a given number to a cell. An example is: **A48** which adds 48 to the current cell.
+- Screw can subtract a given number from a cell. An example is **S2** which subtracts 2 from the current cell.
 
 ## Running Screw Code
 **NOTE: SCRINT was developed to be run on a bash terminal**
