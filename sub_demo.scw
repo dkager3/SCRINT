@@ -1,8 +1,8 @@
 A57.		; Add '57' (9 as an integer)
->A10.		; Output '\n' in Cell 2
+>A10.		; Output '\n' in Cell 1
 
-<				; Go Back to Cell 1
-S4			; Subtract 4 from Cell 1
+<				; Go Back to Cell 0
+S4			; Subtract 4 from Cell 0
 .				; Output '53' (5 as an integer)
 >.			; Output '\n'
 ~				; End Program

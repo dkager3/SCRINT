@@ -1,48 +1,48 @@
 ; Hello World with only elementary operations
 
->+++++ ++++										;ADD 9 TO CELL 2
+>+++++ ++++										;ADD 9 TO CELL 1
 {
-<+++++ +++		  							;LOOP UNTIL CELL 1 = 72 AND CELL 2 = 0
+<+++++ +++		  							;LOOP UNTIL CELL 0 = 72 AND CELL 2 = 0
 >-
 }
 <.														;PRINT "H"
-{-}														;0 OUT CELL 1
+{-}														;0 OUT CELL 0
 
 
->+++++ +++++									;ADD 10 TO CELL 2
+>+++++ +++++									;ADD 10 TO CELL 1
 {
-<+++++ +++++									;LOOP UNTIL CELL 1 = 100 AND CELL 2 = 0
+<+++++ +++++									;LOOP UNTIL CELL 0 = 100 AND CELL 1 = 0
 >-
 }
-<+.														;ADD 1 TO CELL 1, SO IT EQUALS 101 AND PRINT 'e'
+<+.														;ADD 1 TO CELL 0, SO IT EQUALS 101 AND PRINT 'e'
 +++++ ++..+++.								;PRINT "llo"
-{-}														;0 OUT CELL 1
+{-}														;0 OUT CELL 0
 
->+++++ +++										;ADD 8 TO CELL 2
+>+++++ +++										;ADD 8 TO CELL 1
 {
-<++++													;LOOP UNTIL CELL 1 = 32
+<++++													;LOOP UNTIL CELL 0 = 32
 >-
 }
 <.														;PRINT SPACE
 
->+++++ +++++ +								;ADD 11 TO CELL 2
+>+++++ +++++ +								;ADD 11 TO CELL 1
 {
-<+++++												;LOOP UNTIL CELL 1 = 87
+<+++++												;LOOP UNTIL CELL 0 = 87
 >-
 }
 <.														;PRINT 'W'
 
->+++++ +											;ADD 6 TO CELL 2
+>+++++ +											;ADD 6 TO CELL 1
 {
-<++++													;LOOP TO ADD 24 TO CELL 1 SO CELL 1 = 111
+<++++													;LOOP TO ADD 24 TO CELL 0 SO CELL 0 = 111
 >-
 }
 <.+++.----- -.----- ---.			;PRINT "orld"
-{-}														;0 OUT CELL 1
+{-}														;0 OUT CELL 0
 
->+++++ +++										;ADD 8 TO CELL 2
+>+++++ +++										;ADD 8 TO CELL 1
 {
-<++++													;LOOP UNTIL CELL 1 = 32
+<++++													;LOOP UNTIL CELL 0 = 32
 >-
 }
 <+.														;INCREMENT TO 33 AND PRINT '!'
