@@ -1,4 +1,4 @@
-# SCRINT 2.0.1 Documentation
+# SCRINT 2.0.2 Documentation
 Welcome! Please view the documentation for SCRINT down below.
 
 ## What is SCRINT?
