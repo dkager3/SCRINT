@@ -1,6 +1,8 @@
 # SCRINT 2.0 Documentation
 Welcome! Please view the documentation for SCRINT down below.
 
+*Here is a link to the Screw [wiki](https://esolangs.org/wiki/Screw)**
+
 ## What is SCRINT?
 SCRINT is the Screw Interpreter. Screw is a programming language that is closely modeled after Brainf\*\*k. How Screw differs is that it has some different symbols, extra features, and has a termination character for the end of programs.
 
