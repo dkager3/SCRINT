@@ -1,4 +1,4 @@
-# SCRINT 2.0.2 Documentation
+# SCRINT 2.0 Documentation
 Welcome! Please view the documentation for SCRINT down below.
 
 ## What is SCRINT?
@@ -36,9 +36,11 @@ Screw's syntax is similar to Brainf\*\*k. You must have a tilda (~) at the end o
 ## Running Screw Code
 **NOTE: SCRINT was developed to be run on a bash terminal**
 
-To run Screw you will have to download the main.c and make files, then open your bash terminal in the same directory as the files you downloaded. Then and type the following: 
+To run Screw you will have to download the main.c and make files from the "Interpreter" folder in this repo, then open your bash terminal in the same directory as the files you downloaded. Then type the following: 
 **make**
 
-Hit enter and then then you will have an executable named scrint. Next make sure your Screw programs are in the same directory as your exectubale. Then in bash, just type:                                                                                                 **./scrint <your_file_here>.scw**
+Hit enter and then then you will have an executable named "scrint". Next make sure your Screw programs are in the same directory as your scrint exectubale. Then in bash, just type:                                                                                                 **./scrint <your_file_here>.scw**
+
+There are sample Screw programs in the "Programs" folder of this repo.
 
 This will run your file and that is it! You can view version information if you wish by typing:                                         **./scrint -v**
